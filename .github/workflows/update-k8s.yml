@@ -6,6 +6,7 @@ on:
       - 'k8s/**'
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   apply_k8s_configs:
