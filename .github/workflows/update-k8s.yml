@@ -1,0 +1,28 @@
+name: Update Kubernetes Configs
+
+on:
+  push:
+    paths:
+      - 'k8s/**'
+    branches:
+      - main
+
+jobs:
+  apply_k8s_configs:
+    name: Apply Kubernetes Configs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Kubernetes context
+        uses: azure/k8s-set-context@v3
+        with:
+          kubeconfig: ${{ secrets.KUBECONFIG }}
+
+      - name: Apply all Kubernetes Configs
+        run: kubectl apply -f k8s/
+
+      - name: Verify Resources
+        run: kubectl get all
