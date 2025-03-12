@@ -5,6 +5,8 @@ metadata:
   namespace: ingress
 spec:
   type: NodePort
+  externalIPs:
+    - 185.216.27.229
   selector:
     name: nginx-ingress-microk8s
   ports:
