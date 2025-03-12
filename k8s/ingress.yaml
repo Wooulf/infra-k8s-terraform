@@ -5,6 +5,9 @@ metadata:
   namespace: default
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    external-dns.alpha.kubernetes.io/hostname: "woulf.fr"
 spec:
   rules:
   - host: woulf.fr
@@ -17,3 +20,4 @@ spec:
             name: portfolio
             port:
               number: 3000
+  ingressClassName: "nginx"
