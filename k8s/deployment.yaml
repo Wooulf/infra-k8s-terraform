@@ -19,3 +19,8 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
+          env:
+          - name: NEXT_PUBLIC_EMAIL
+            value: "corentin33boucard@gmail.com"
+          - name: NEXT_PUBLIC_URL
+            value: "https://woulf.fr"
