@@ -3,9 +3,10 @@ kind: Ingress
 metadata:
   name: woulf-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: letsencrypt-prod
     acme.cert-manager.io/http01-edit-in-place: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/hsts-max-age: "31536000"
 spec:
   ingressClassName: nginx
   rules:
