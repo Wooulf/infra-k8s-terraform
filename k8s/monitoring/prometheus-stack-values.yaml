@@ -1,5 +1,6 @@
 grafana:
-  adminPassword: "supersecret"
+  admin:
+    existingSecret: monitoring-grafana
   ingress:
     enabled: true
     ingressClassName: nginx
