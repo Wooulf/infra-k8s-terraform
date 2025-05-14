@@ -1,0 +1,21 @@
+grafana:
+  adminPassword: "supersecret"
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hosts:
+      - grafana.woulf.fr
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    tls:
+      - hosts:
+          - grafana.woulf.fr
+        secretName: grafana-woulf-tls
+
+alertmanager:
+  enabled: false
+
+prometheus:
+  prometheusSpec:
+    serviceMonitorSelectorNilUsesHelmValues: false
