@@ -13,6 +13,12 @@ grafana:
       - hosts:
           - grafana.woulf.fr
         secretName: grafana-woulf-tls
+  grafana.ini:
+    auth.anonymous:
+      enabled: true
+      org_name: Main Org.
+      org_role: Viewer
+      hide_version: true
 
 alertmanager:
   enabled: false
