@@ -13,12 +13,31 @@ grafana:
       - hosts:
           - grafana.woulf.fr
         secretName: grafana-woulf-tls
+
+  additionalDataSources: []
+  sidecar:
+    dashboards:
+      enabled: true
+      label: grafana_dashboard
+      searchNamespace: ALL
+  dashboardsConfigMaps:
+    grafana-dashboard-home: grafana-dashboard-home
+
+  defaultDashboardsEnabled: true
   grafana.ini:
     auth.anonymous:
       enabled: true
       org_name: Main Org.
       org_role: Viewer
       hide_version: true
+    users:
+      viewers_can_edit: false
+      viewers_can_save: false
+    panels:
+      disable_sanitize_html: true
+    dashboards:
+      default_home_dashboard_path: /var/lib/grafana/dashboards/grafana-dashboard-home/default.json
+      
 
 alertmanager:
   enabled: false
